@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Studio — Product Reference Documents</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#F5F4FA;color:#18172B;line-height:1.6;padding:40px 24px}
+.wrap{max-width:800px;margin:0 auto}
+.header{text-align:center;margin-bottom:40px}
+.logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#6C3AED,#E040A0);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:24px;margin-bottom:12px}
+h1{font-size:24px;font-weight:700;letter-spacing:-0.03em;margin-bottom:6px}
+.sub{font-size:14px;color:#6E6B80}
+.cards{display:flex;flex-direction:column;gap:16px}
+.card{background:#fff;border:1px solid #E5E3F1;border-radius:12px;padding:24px;transition:box-shadow 0.2s;text-decoration:none;color:inherit;display:block}
+.card:hover{box-shadow:0 4px 20px rgba(80,60,140,0.1);border-color:#C4B5FD}
+.card-num{font-size:11px;font-weight:700;color:#A09DB0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px}
+.card h2{font-size:17px;font-weight:700;color:#18172B;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card h2 .badge{padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700}
+.card p{font-size:13px;color:#6E6B80;margin-bottom:12px}
+.card-stats{display:flex;gap:12px;flex-wrap:wrap}
+.stat{padding:4px 10px;border-radius:5px;font-size:11px;font-weight:600;background:#F5F4FA;color:#3D3A50;border:1px solid #E5E3F1}
+.footer{text-align:center;margin-top:40px;font-size:12px;color:#A09DB0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="header">
+  <div class="logo">⊞</div>
+  <h1>Marketing Studio — Product Reference</h1>
+  <p class="sub">FY26 Q4 Release Planning · UX & PM Documentation Suite</p>
+</div>
+
+<div class="cards">
+
+<a class="card" href="ia-views-matrix-updated.html">
+  <div class="card-num">Document 1</div>
+  <h2>IA Views Matrix <span class="badge" style="background:#EDE9FE;color:#6C3AED">Information Architecture</span> <span class="badge" style="background:#DCFCE7;color:#166534">+27 New</span></h2>
+  <p>Complete information architecture mapping every screen, view, and interaction pattern in Marketing Studio. 147 rows covering 60 entities across 6 entity types (Skills, Artifacts, Assets, AI Interactions, Logs, Cues). Each row defines the view type, interaction modes, role context, information visualisation variables, manipulation variables, and action variables. Includes 27 new rows added from PRFAQ gap analysis — highlighted in green with a "Show New Only" filter.</p>
+  <div class="card-stats">
+    <span class="stat">147 IA rows</span>
+    <span class="stat">60 entities</span>
+    <span class="stat">6 entity types</span>
+    <span class="stat">27 new from gap analysis</span>
+    <span class="stat">Interactive filters & search</span>
+  </div>
+</a>
+
+<a class="card" href="ms-use-case-task-flows.html">
+  <div class="card-num">Document 2</div>
+  <h2>Use Case Task Flows <span class="badge" style="background:#EDE9FE;color:#6C3AED">UX & PM Reference</span></h2>
+  <p>Sequential task breakdowns for all 22 use cases across R1, R2, R3, and Backlog. Every task specifies the actor type (Human / System / Both), the specific user role involved, and expands to show detailed information visualisation needs, manipulation variables, action variables with intended outputs, view type and interaction design specifications, and PM & UX notes with actionable design decisions. Built from cross-referencing the PRFAQ, Airtable entity model, and IA Views Matrix.</p>
+  <div class="card-stats">
+    <span class="stat">22 use cases</span>
+    <span class="stat">375 tasks</span>
+    <span class="stat">2,274 info-vis items</span>
+    <span class="stat">1,714 manipulation variables</span>
+    <span class="stat">1,615 action items</span>
+    <span class="stat">16 user roles mapped</span>
+  </div>
+</a>
+
+<a class="card" href="ms-ai-automation-opportunities.html">
+  <div class="card-num">Document 3</div>
+  <h2>AI Automation Opportunities <span class="badge" style="background:#FFF1F2;color:#9F1239">Suggestions</span></h2>
+  <p>Analysis of 20 unique AI capabilities that could improve velocity and reduce manual effort across the 375 tasks identified in the Task Flows document. Each opportunity is classified by AI type (Agentic, Generative, Pattern Recognition, Skill-based), impact level, technology maturity, and whether it is already covered in the PRFAQ or is a new suggestion. 16 of 20 capabilities are suggestions not currently in the PRFAQ. 17 of 20 are production-ready with today's AI technology. Includes UX implementation guidance for each capability.</p>
+  <div class="card-stats">
+    <span class="stat">20 AI capabilities</span>
+    <span class="stat">396 task instances affected</span>
+    <span class="stat">16 new suggestions</span>
+    <span class="stat">17 production-ready</span>
+    <span class="stat">22 use cases covered</span>
+  </div>
+</a>
+
+</div>
+
+<div class="footer">
+  Marketing Studio · FY26 Q4 · Generated from PRFAQ + Airtable entity model + IA Views Matrix
+</div>
+</div>
+</body>
+</html>

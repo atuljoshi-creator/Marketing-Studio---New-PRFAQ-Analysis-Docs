@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Studio — AI Automation Opportunities Map</title>
+<style>
+:root{--bg:#F5F4FA;--s:#fff;--s2:#FAFAFE;--b:#E5E3F1;--b2:#F0EEF5;--t:#18172B;--t2:#3D3A50;--t3:#6E6B80;--t4:#A09DB0;--a:#6C3AED;--abg:#EDE9FE;--ab:#C4B5FD;--r:6px;--rl:10px}
+*{box-sizing:border-box;margin:0;padding:0;max-width:100%}
+body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);line-height:1.55;-webkit-font-smoothing:antialiased}
+.hdr{position:sticky;top:0;z-index:50;background:var(--s);border-bottom:1px solid var(--b);box-shadow:0 2px 12px rgba(80,60,140,0.06)}
+.hi{max-width:1440px;margin:0 auto;padding:16px 24px 14px}
+.tr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.logo{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,#6C3AED,#E040A0);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;flex-shrink:0}
+h1{font-size:16px;font-weight:700;letter-spacing:-0.02em}
+.bdg{padding:3px 11px;border-radius:999px;font-size:10px;font-weight:700;white-space:nowrap}
+.sub{font-size:12px;color:var(--t3);line-height:1.5;margin-bottom:4px}.sub b{color:var(--t)}
+.ctrls{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:flex-end}
+.fg{display:flex;flex-direction:column;gap:2px}
+.fg label{font-size:9px;font-weight:700;color:var(--t4);text-transform:uppercase;letter-spacing:0.08em}
+.fg select,.fg input{padding:5px 9px;font-size:12px;border:1px solid var(--b);border-radius:var(--r);outline:none;font-family:inherit;color:var(--t2);background:var(--s)}
+.fg input{min-width:200px}
+
+.stats{display:flex;gap:24px;padding:12px 24px;background:var(--s2);border-bottom:1px solid var(--b2);max-width:1440px;margin:0 auto;flex-wrap:wrap}
+.st{text-align:center}.sv{font-size:24px;font-weight:700;color:var(--a)}.sl{font-size:9px;color:var(--t4);text-transform:uppercase;letter-spacing:0.06em}
+
+.wrap{max-width:1440px;margin:0 auto;padding:16px 24px 40px}
+
+.card{background:var(--s);border:1px solid var(--b);border-radius:var(--rl);margin-bottom:12px;overflow:hidden;transition:box-shadow 0.2s}
+.card:hover{box-shadow:0 3px 12px rgba(80,60,140,0.08)}
+.card-h{padding:16px 20px;cursor:pointer;display:flex;align-items:flex-start;gap:14px;transition:background 0.15s}
+.card-h:hover{background:var(--s2)}.card-h.open{background:var(--s2);border-bottom:1px solid var(--b2)}
+.card-arrow{font-size:10px;color:var(--ab);margin-top:4px;transition:transform 0.2s;flex-shrink:0}
+.card-h.open .card-arrow{transform:rotate(90deg);color:var(--a)}
+.card-meta{flex:1;min-width:0;overflow:hidden}
+.card-title{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;word-wrap:break-word}
+.card-desc{font-size:12px;color:var(--t3);margin-top:4px;word-wrap:break-word;overflow-wrap:break-word}
+.card-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.ch{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;white-space:normal;word-wrap:break-word}
+
+.card-body{padding:0 20px 20px;display:none}
+.card.open .card-body{display:block}
+
+.detail-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:12px}
+.db{padding:12px;border-radius:var(--r);border:1px solid var(--b2);min-width:0;word-wrap:break-word;overflow-wrap:break-word}
+.db h4{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--t4);margin-bottom:6px}
+.db p,.db li{font-size:12px;color:var(--t2);line-height:1.55}
+.db.impact{background:#F0FDF4;border-color:#BBF7D0}
+.db.maturity{background:#EFF6FF;border-color:#BFDBFE}
+.db.desc{background:#FFFEF5;border-color:#FDE68A}
+.db.prfaq{background:#FFF7ED;border-color:#FED7AA}
+.db.ucs{background:#F5F3FF;border-color:#DDD6FE}
+.db.ux{background:#FFF1F2;border-color:#FECDD3}
+.full{grid-column:1/-1}
+
+.uc-pills{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.uc-pill{padding:2px 7px;border-radius:3px;font-size:10px;font-weight:600;background:var(--abg);color:var(--a)}
+
+.type-badge{padding:3px 10px;border-radius:999px;font-size:10px;font-weight:700}
+.type-generative{background:#DBEAFE;color:#1E40AF}
+.type-agentic{background:#EDE9FE;color:#5B21B6}
+.type-pattern{background:#FEF3C7;color:#92400E}
+.type-skill{background:#D1FAE5;color:#065F46}
+.type-multi{background:#FCE7F3;color:#9D174D}
+
+.impact-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
+.impact-vh{background:#DCFCE7;color:#166534;border:1px solid #86EFAC}
+.impact-h{background:#DBEAFE;color:#1E40AF;border:1px solid #93C5FD}
+.impact-m{background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A}
+
+.maturity-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600}
+.maturity-ready{background:#DCFCE7;color:#166534}
+.maturity-emerging{background:#FEF3C7;color:#92400E}
+
+.prfaq-badge{padding:2px 8px;border-radius:4px;font-size:9.5px;font-weight:600}
+.prfaq-not{background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3}
+.prfaq-partial{background:#FEF9C3;color:#854D0E;border:1px solid #FDE68A}
+.prfaq-covered{background:#DCFCE7;color:#166534;border:1px solid #86EFAC}
+
+.suggestion-flag{display:inline-block;padding:2px 8px;border-radius:3px;font-size:9px;font-weight:700;background:#FFF1F2;color:#9F1239;border:1px solid #FECDD3;margin-left:6px;letter-spacing:0.03em}
+
+@media print{.hdr{position:static;box-shadow:none}.ctrls{display:none}.card-body{display:block!important}}
+</style>
+</head>
+<body>
+<div class="hdr"><div class="hi">
+<div class="tr">
+ <div class="logo">🤖</div>
+ <h1>Marketing Studio — AI Automation Opportunities</h1>
+ <span class="bdg" style="background:#EDE9FE;color:#6C3AED">Companion to Task Flows</span>
+</div>
+<p class="sub">Analysis of <b>20 unique AI capabilities</b> across <b>396 task instances</b> in 22 use cases. Each opportunity maps to specific tasks, roles, and phases in the Task Flows document. Items not in the PRFAQ are marked as <span class="suggestion-flag">SUGGESTION</span> — potential areas for AI-based automation that leverage recent advances in agentic AI, MCP skill composition, and generative AI.</p>
+<div class="ctrls">
+ <div class="fg" style="flex:1 1 200px"><label>Search</label><input id="fs" placeholder="Search capabilities, descriptions, roles…" oninput="R()"></div>
+ <div class="fg"><label>AI Type</label><select id="ft" onchange="R()"><option value="">All</option><option value="Agentic">Agentic AI</option><option value="Generative">Generative AI</option><option value="Pattern">Pattern Recognition</option><option value="Skill">Skill-based AI</option></select></div>
+ <div class="fg"><label>Impact</label><select id="fi" onchange="R()"><option value="">All</option><option value="Very High">Very High</option><option value="High">High</option><option value="Medium">Medium</option></select></div>
+ <div class="fg"><label>Maturity</label><select id="fm" onchange="R()"><option value="">All</option><option value="Production-ready">Production-ready</option><option value="Emerging">Emerging</option></select></div>
+ <div class="fg"><label>PRFAQ Status</label><select id="fp" onchange="R()"><option value="">All</option><option value="Not in">Not in PRFAQ (Suggestion)</option><option value="Partially">Partially covered</option></select></div>
+</div>
+</div></div>
+<div class="stats" id="sb"></div>
+<div class="wrap" id="ct"></div>
+<script>
+const DATA=[{"capability":"MCP skill composition for cross-entity auto-linking","detail":{"type":"Skill-based AI","capability":"MCP skill composition for cross-entity auto-linking","description":"When operator creates or modifies an entity, AI automatically identifies and suggests linkages to related entities via MCP skills. For example, when creating an IPD campaign, AI auto-discovers matching audiences (based on brief criteria), suggests compatible offers (based on product and discount depth), and recommends experiments (based on use case archetype). Each suggestion is one-click to link.","impact":"High \u2014 cross-entity linking is currently manual and error-prone. Auto-discovery reduces the \"forgot to link the experiment\" class of validation failures.","maturity":"Production-ready \u2014 MCP skill composition is the core Studio architecture. AI adds intelligent matching.","prfaq_status":"PRFAQ describes MCP contracts but not AI-driven cross-entity auto-linking \u2014 suggestion for R1.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Define / select audience segment","task_step":4,"role":"CRMA Analyst / Data Solutions","phase":"Build \u2014 Audience"},"uc_count":65,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Build \u2014 Audience","Build \u2014 Content","Build \u2014 IPD","Build \u2014 Web"],"roles":["CRMA Analyst / Data Solutions","Campaign Ops","Content Author / Designer","Marketing Ops / Content Author"]},{"capability":"Brief auto-drafting from historical patterns","detail":{"type":"Generative AI","capability":"Brief auto-drafting from historical patterns","description":"AI can analyze past successful briefs for the same use case archetype (e.g., cancel-save, flash promo) and generate a structured first draft with objectives, audience hypothesis, offer range, and success criteria pre-populated. Operator reviews and refines rather than authoring from scratch.","impact":"High \u2014 could reduce brief creation time from hours to minutes. Historical pattern matching improves with each campaign cycle.","maturity":"Production-ready \u2014 current LLMs with RAG over past briefs can deliver this today.","prfaq_status":"Partially covered \u2014 PRFAQ mentions AI fill suggestions in R1 but not full brief generation.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Create / retrieve Strategic Brief (SOT)","task_step":1,"role":"LMM / GTM Lead","phase":"Plan"},"uc_count":27,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Build \u2014 Conversational","Plan"],"roles":["LMM / GTM Lead"]},{"capability":"Automatic brief completeness validation and gap identification","detail":{"type":"Agentic AI","capability":"Automatic brief completeness validation and gap identification","description":"AI agent reviews brief sections, identifies missing fields, weak hypotheses, or contradictions (e.g., broad audience + deep discount = budget risk), and surfaces specific recommendations. Can also cross-reference brief against available data (audience sizes, attribute availability, budget constraints) to flag feasibility issues before build begins.","impact":"Medium \u2014 prevents downstream rework when incomplete briefs reach build phase.","maturity":"Production-ready \u2014 structured document analysis with domain-specific validation rules.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R1/R2 enhancement.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Create / retrieve Strategic Brief (SOT)","task_step":1,"role":"LMM / GTM Lead","phase":"Plan"},"uc_count":27,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Build \u2014 Conversational","Plan"],"roles":["LMM / GTM Lead"]},{"capability":"Multi-variant content generation with A/B optimization","detail":{"type":"Generative AI","capability":"Multi-variant content generation with A/B optimization","description":"AI generates multiple copy variants simultaneously (5-10 headline options, body copy variations, CTA alternatives) optimized for different tones, audiences, and conversion objectives. Each variant includes predicted engagement score based on historical content performance data. Operator selects winners rather than writing from scratch.","impact":"High \u2014 content creation is the most time-consuming creative task. Multi-variant generation enables faster experimentation.","maturity":"Production-ready \u2014 current LLMs excel at copy generation. Brand compliance checking via context packages.","prfaq_status":"Partially covered \u2014 IA row 69 shows AI content generation. Enhancement: add predictive scoring per variant.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Author / select content and creative assets","task_step":10,"role":"Content Author / Designer","phase":"Build \u2014 Content"},"uc_count":25,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Build \u2014 Content","Validate"],"roles":["Content Author / Designer"]},{"capability":"Automatic context package recommendation based on project type","detail":{"type":"Agentic AI","capability":"Automatic context package recommendation based on project type","description":"When a new project is created, AI analyzes the project type, BU, product, and use case archetype to automatically recommend which context packages to attach. For example, a QBO cancel-save campaign automatically gets recommended: \"QBO product context\", \"retention legal disclaimers\", \"cancel-flow persona profiles\".","impact":"Medium \u2014 ensures correct context is always attached; prevents \"forgot to load brand guidelines\" errors.","maturity":"Production-ready \u2014 classification + recommendation based on project metadata.","prfaq_status":"R3 covers self-reinforcing context (system proposes from behavior), but proactive package recommendation at project creation is not mentioned \u2014 suggestion for R2.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Load context packages","task_step":3,"role":"Marketing Ops","phase":"Plan"},"uc_count":22,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Plan"],"roles":["Marketing Ops"]},{"capability":"Natural language to audience segment definition","detail":{"type":"Generative AI + Agentic","capability":"Natural language to audience segment definition","description":"Operator describes audience in plain language (\"QBO users who visited the cancel page in the last 7 days but didn't complete cancellation, excluding anyone already in a save flow\") and AI translates to structured AEP criteria tree with AND/OR logic, attribute selections, and value ranges. Operator reviews and adjusts the generated tree rather than building from scratch.","impact":"Very High \u2014 audience building is required in ALL 22 use cases and is currently the most technical task for marketing ops. NL-to-criteria dramatically lowers the skill barrier.","maturity":"Production-ready \u2014 text-to-structured-query is a well-solved LLM capability. Requires attribute catalog as context.","prfaq_status":"Not explicitly in PRFAQ \u2014 PRFAQ mentions AI suggestions but not NL-to-segment. Strong suggestion for R1.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Define / select audience segment","task_step":4,"role":"CRMA Analyst / Data Solutions","phase":"Build \u2014 Audience"},"uc_count":22,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Build \u2014 Audience"],"roles":["CRMA Analyst / Data Solutions"]},{"capability":"Audience sizing anomaly detection and historical benchmarking","detail":{"type":"Pattern Recognition","capability":"Audience sizing anomaly detection and historical benchmarking","description":"AI compares the estimated segment size against historical benchmarks for the same use case type. Flags if segment is unusually small (< 1,000 \u2014 may not be statistically significant), unusually large (> 1M \u2014 may need tighter targeting), or has changed significantly from the last time this segment was used.","impact":"Medium \u2014 catches audience definition errors before they reach production.","maturity":"Production-ready \u2014 statistical comparison against historical distributions.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R1.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Define / select audience segment","task_step":4,"role":"CRMA Analyst / Data Solutions","phase":"Build \u2014 Audience"},"uc_count":22,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Build \u2014 Audience"],"roles":["CRMA Analyst / Data Solutions"]},{"capability":"Self-healing validation with auto-fix for common issues","detail":{"type":"Agentic AI","capability":"Self-healing validation with auto-fix for common issues","description":"When validation identifies common, low-risk issues (missing impression cap, naming convention violation, missing tracking parameter), AI auto-generates the fix and shows it in a \"proposed fixes\" panel. Operator approves all fixes in one click rather than navigating to each field individually. Only applies to deterministic fixes \u2014 ambiguous issues still require manual resolution.","impact":"High \u2014 validation currently finds 10-20 issues per campaign, each requiring manual navigation and fix. Batch auto-fix for deterministic issues saves significant time.","maturity":"Production-ready \u2014 rule-based auto-fix for known patterns. AI adds intelligence for edge cases.","prfaq_status":"PRFAQ mentions \"AI fix suggestion per failure\" \u2014 this extends to batch auto-fix with one-click approval.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Run pre-launch validation (health check)","task_step":11,"role":"Campaign Ops + System","phase":"Validate"},"uc_count":22,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Validate"],"roles":["Campaign Ops + System"]},{"capability":"Intelligent publish scheduling with conflict avoidance","detail":{"type":"Agentic AI","capability":"Intelligent publish scheduling with conflict avoidance","description":"AI analyzes the campaign calendar and recommends optimal publish time based on: (1) avoiding overlap with other campaigns targeting the same audience, (2) historical engagement patterns by day/time, (3) timezone optimization for the target geo, (4) avoiding known system maintenance windows. Shows recommendation with reasoning.","impact":"Medium \u2014 currently operators choose publish time manually. AI scheduling prevents conflicts and optimizes reach.","maturity":"Production-ready \u2014 calendar analysis + historical pattern matching.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R2.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Three-gate publishing: Plan \u2192 Verify \u2192 Publish","task_step":12,"role":"Campaign Ops (Owner) + System","phase":"Promote / Publish"},"uc_count":22,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Promote / Publish"],"roles":["Campaign Ops (Owner) + System"]},{"capability":"Autonomous anomaly detection with root cause hypothesis","detail":{"type":"Pattern Recognition + Agentic","capability":"Autonomous anomaly detection with root cause hypothesis","description":"AI continuously monitors campaign metrics and proactively alerts when anomalies are detected (conversion drop, impression spike, offer over-redemption). Goes beyond simple threshold alerts: AI generates root cause hypotheses ranked by probability (e.g., \"Conversion dropped 30% \u2014 most likely causes: (1) targeting rule changed at 2pm, 70% confidence; (2) competing campaign launched on same audience, 20% confidence; (3) seasonal effect, 10% confidence\").","impact":"Very High \u2014 transforms monitoring from reactive dashboard checking to proactive issue detection. Root cause hypotheses save hours of manual investigation.","maturity":"Emerging \u2014 anomaly detection is mature; root cause hypothesis generation is newer but feasible with campaign dependency graphs.","prfaq_status":"PRFAQ mentions \"operational insights\" but not proactive AI anomaly detection \u2014 strong suggestion for R2/R3.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Monitor campaign via operational dashboard","task_step":13,"role":"Marketing Ops / LMM","phase":"Monitor"},"uc_count":22,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C01","UC-C02","UC-C03","UC-D01","UC-D02","UC-D03","UC-E01","UC-E02","UC-E03"],"phases":["Monitor"],"roles":["Marketing Ops / LMM"]},{"capability":"Automated experiment design from hypothesis","detail":{"type":"Agentic AI","capability":"Automated experiment design from hypothesis","description":"Operator states hypothesis in natural language (\"I think a 30% discount will outperform 20% for cancel-save on QBO Plus users\"). AI generates complete experiment configuration: control (20%) vs test (30%), recommends traffic split based on expected effect size, calculates required sample size and duration, selects appropriate primary metric, and pre-configures guardrails based on use case archetype.","impact":"High \u2014 experiment setup currently requires Data Scientist involvement. NL-to-experiment-design enables self-serve by marketing ops.","maturity":"Production-ready \u2014 statistical design calculation + LLM interpretation of hypothesis.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R2/R3.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Design experiment (A/B, holdout)","task_step":7,"role":"Data Scientist / CRMA Analyst","phase":"Build \u2014 Experiment"},"uc_count":17,"ucs":["UC-A01","UC-A02","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-C01","UC-C02","UC-C03","UC-D01","UC-D03","UC-E01"],"phases":["Build \u2014 Experiment"],"roles":["Data Scientist / CRMA Analyst"]},{"capability":"Proactive experiment collision detection with resolution suggestions","detail":{"type":"Pattern Recognition","capability":"Proactive experiment collision detection with resolution suggestions","description":"AI continuously monitors all running and planned experiments. When a new experiment is created, AI not only detects collision but suggests resolution: reschedule to avoid overlap, use mutual exclusion groups, or merge into a multi-arm test. Runs automatically, not on-demand.","impact":"Medium \u2014 prevents contaminated experiment results that waste weeks of data collection.","maturity":"Production-ready \u2014 graph-based overlap detection + scheduling optimization.","prfaq_status":"PRFAQ mentions collision as a concern but doesn't propose proactive AI-driven resolution.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Design experiment (A/B, holdout)","task_step":7,"role":"Data Scientist / CRMA Analyst","phase":"Build \u2014 Experiment"},"uc_count":17,"ucs":["UC-A01","UC-A02","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B02","UC-B03","UC-C01","UC-C02","UC-C03","UC-D01","UC-D03","UC-E01"],"phases":["Build \u2014 Experiment"],"roles":["Data Scientist / CRMA Analyst"]},{"capability":"AI-powered offer depth optimization recommendation","detail":{"type":"Generative AI","capability":"AI-powered offer depth optimization recommendation","description":"AI analyzes historical redemption rates, revenue impact, and customer lifetime value for similar offer types and recommends optimal discount depth, duration, and eligibility criteria. Shows projected ROI curve across different discount levels (e.g., \"25% off yields 12% conversion at $X ROI; 40% off yields 18% conversion but lower ROI\").","impact":"High \u2014 pricing decisions currently rely on intuition + Finance negotiation. Data-driven recommendations improve offer effectiveness and speed up Finance alignment.","maturity":"Emerging \u2014 requires integration with PPM historical data and LTV models. R2/R3 timeframe.","prfaq_status":"PRFAQ mentions \"AI pricing recommendation (read-only)\" \u2014 this extends it to actionable optimization with ROI projections.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Configure pricing offer / promotion","task_step":6,"role":"Pricing Ops","phase":"Build \u2014 Offer"},"uc_count":15,"ucs":["UC-A01","UC-A02","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B04","UC-C01","UC-C02","UC-C03","UC-E01","UC-E03"],"phases":["Build \u2014 Offer"],"roles":["Pricing Ops"]},{"capability":"AI pre-screening for low-risk auto-approval routing","detail":{"type":"Agentic AI","capability":"AI pre-screening for low-risk auto-approval routing","description":"AI evaluates each approval request against historical approval patterns and policy rules. For low-risk items (standard discount <30%, existing product, within quarterly budget) that have 99%+ historical approval rate, AI recommends auto-approval routing with human spot-check rather than full manual review. High-risk items (bold offers, new products, budget-exceeding) always route to full review.","impact":"High \u2014 Finance approval is a velocity bottleneck. Auto-routing low-risk items could reduce approval queue by 60-70%.","maturity":"Production-ready \u2014 classification based on historical approval patterns. Risk scoring is straightforward.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R2. Requires Finance stakeholder buy-in on auto-approval thresholds.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Finance approval gate (CAO/COSA)","task_step":6.1,"role":"Finance (CAO / COSA)","phase":"Build \u2014 Offer"},"uc_count":15,"ucs":["UC-A01","UC-A02","UC-A04","UC-A05","UC-A06","UC-A07","UC-A08","UC-A09","UC-B01","UC-B04","UC-C01","UC-C02","UC-C03","UC-E01","UC-E03"],"phases":["Build \u2014 Offer"],"roles":["Finance (CAO / COSA)"]},{"capability":"Workbook-to-campaign auto-generation","detail":{"type":"Agentic AI","capability":"Workbook-to-campaign auto-generation","description":"Operator uploads an IPD workbook (Excel/CSV) and AI agent parses the structure, maps columns to campaign hierarchy (Campaign \u2192 Ad Groups \u2192 Ads \u2192 Variants), validates data quality, auto-corrects common formatting issues, and generates the complete campaign tree. Operator reviews generated structure rather than manually configuring each level.","impact":"Very High \u2014 workbook import is the current primary input method. Intelligent parsing with auto-correction could eliminate 80%+ of manual campaign creation time for mega-batches.","maturity":"Production-ready \u2014 structured document parsing + mapping is core LLM capability. MCP skills can execute the campaign creation.","prfaq_status":"PRFAQ mentions mega-batch creation but doesn't specify intelligent workbook parsing \u2014 suggestion for R1.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Create IPD campaign (single/bulk/mega-batch)","task_step":8,"role":"Campaign Ops","phase":"Build \u2014 IPD"},"uc_count":12,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A08","UC-A09","UC-B01","UC-B02","UC-C01","UC-C02","UC-D01"],"phases":["Build \u2014 IPD"],"roles":["Campaign Ops"]},{"capability":"Predictive failure prevention during batch execution","detail":{"type":"Agentic AI","capability":"Predictive failure prevention during batch execution","description":"AI monitors batch execution patterns in real-time and predicts which rows are likely to fail BEFORE they execute (based on data patterns from already-failed rows). Suggests preemptive fixes or auto-skips known-bad rows to prevent cascade failures that waste batch execution time.","impact":"High \u2014 reduces the \"200-IPD batch fails at row 150 and has to restart\" problem.","maturity":"Emerging \u2014 requires batch execution telemetry and pattern learning. R2 timeframe.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R1 enhancement after Operation Ledger is established.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Create IPD campaign (single/bulk/mega-batch)","task_step":8,"role":"Campaign Ops","phase":"Build \u2014 IPD"},"uc_count":12,"ucs":["UC-A01","UC-A02","UC-A03","UC-A04","UC-A05","UC-A08","UC-A09","UC-B01","UC-B02","UC-C01","UC-C02","UC-D01"],"phases":["Build \u2014 IPD"],"roles":["Campaign Ops"]},{"capability":"Autonomous diagnostic agent that runs checks without human step-through","detail":{"type":"Agentic AI","capability":"Autonomous diagnostic agent that runs checks without human step-through","description":"Instead of guided wizard where operator clicks through each diagnostic step, AI agent autonomously runs the full diagnostic tree, checks all systems (CM, PZN, IXP, AEP via MCPs), and presents a complete diagnostic report with root cause, affected entities, and recommended resolution. Operator reviews and approves the resolution rather than stepping through each check.","impact":"Very High \u2014 current diagnostic takes 30-60 minutes of manual step-through. Autonomous agent could complete in 2-3 minutes.","maturity":"Production-ready \u2014 MCP tool composition enables multi-system diagnostic chains. This is exactly what agentic AI excels at.","prfaq_status":"PRFAQ describes guided playbooks \u2014 autonomous execution is an enhancement that leverages MCP infrastructure.","ucid":"UC-A03","uc_name":"FTU / onboarding activation","release":"R3","task":"Diagnose post-launch issues (R3)","task_step":14,"role":"Campaign Ops + System (AI)","phase":"Operate \u2014 Diagnose"},"uc_count":11,"ucs":["UC-A03","UC-A06","UC-A07","UC-A09","UC-B01","UC-B02","UC-B03","UC-B04","UC-C02","UC-C03","UC-D01"],"phases":["Operate \u2014 Diagnose"],"roles":["Campaign Ops + System (AI)"]},{"capability":"Brief-to-page-draft generation with design intelligence","detail":{"type":"Generative AI + Multi-modal","capability":"Brief-to-page-draft generation with design intelligence","description":"AI reads the campaign brief and product context, selects the most appropriate template, generates slot content (headlines, body copy, CTAs), recommends images from the asset library based on campaign theme, and pre-configures PZN blocks based on audience definition. Produces a complete page draft that operator refines rather than builds from scratch.","impact":"Very High \u2014 web page authoring is the most complex R2 task. AI-generated first draft could reduce build time by 60-70%.","maturity":"Production-ready for text content; emerging for layout/design decisions. R2 timeframe.","prfaq_status":"R3 conversational build covers campaign-level generation but web-specific page drafting is not detailed \u2014 suggestion for R2.","ucid":"UC-A04","uc_name":"Cancel-save / retention intervention","release":"R1","task":"Author web page from template","task_step":9,"role":"Marketing Ops / Content Author","phase":"Build \u2014 Web"},"uc_count":9,"ucs":["UC-A04","UC-B01","UC-B02","UC-B04","UC-C01","UC-C03","UC-D01","UC-D03","UC-E02"],"phases":["Build \u2014 Web"],"roles":["Marketing Ops / Content Author"]},{"capability":"Auto-unpublish impact simulation before targeting change","detail":{"type":"Agentic AI","capability":"Auto-unpublish impact simulation before targeting change","description":"Before operator commits a targeting rule change, AI simulates the full downstream impact: which campaigns will be unpublished, estimated audience reach delta, revenue impact of the offline period, and estimated time to re-publish. Transforms the current \"surprise unpublish\" into an informed decision with projected consequences.","impact":"Very High \u2014 auto-unpublish is the #1 operational disruption. Impact simulation turns a blind action into a calculated decision.","maturity":"Production-ready \u2014 dependency graph traversal + historical re-publish time estimation.","prfaq_status":"Not in PRFAQ \u2014 critical suggestion for R1. PRFAQ acknowledges the risk but doesn't propose simulation.","ucid":"UC-A01","uc_name":"In-product contextual discovery","release":"R1","task":"Configure targeting rule in PZN","task_step":5,"role":"Campaign Ops","phase":"Build \u2014 Targeting"},"uc_count":7,"ucs":["UC-A01","UC-A02","UC-A04","UC-A06","UC-A07","UC-A08","UC-A09"],"phases":["Build \u2014 Targeting"],"roles":["Campaign Ops"]},{"capability":"Proactive sunset recommendation based on campaign performance decay","detail":{"type":"Agentic AI","capability":"Proactive sunset recommendation based on campaign performance decay","description":"AI monitors long-running campaigns and detects performance decay patterns (diminishing returns, audience fatigue, offer staleness). Proactively recommends sunset or refresh with reasoning: \"Cancel-save campaign for QBO Simple Start has shown 40% conversion decline over 90 days \u2014 recommend sunset and replace with refreshed offer.\" Includes recommended replacement strategy.","impact":"Medium \u2014 prevents campaign rot. Currently no one actively monitors whether old campaigns should be retired.","maturity":"Production-ready \u2014 trend detection + decay modeling.","prfaq_status":"Not in PRFAQ \u2014 suggestion for R3.","ucid":"UC-A03","uc_name":"FTU / onboarding activation","release":"R3","task":"Pause / Resume / Sunset campaign","task_step":15,"role":"Campaign Ops (Owner)","phase":"Operate \u2014 Lifecycle"},"uc_count":5,"ucs":["UC-A03","UC-A06","UC-A07","UC-B02","UC-B03"],"phases":["Operate \u2014 Lifecycle"],"roles":["Campaign Ops (Owner)"]}];
+
+let openCards = new Set();
+
+function e(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function typeClass(t){
+  if(t.includes('Generative')&&t.includes('Agentic'))return 'type-multi';
+  if(t.includes('Generative')&&t.includes('Multi'))return 'type-multi';
+  if(t.includes('Agentic'))return 'type-agentic';
+  if(t.includes('Generative'))return 'type-generative';
+  if(t.includes('Pattern'))return 'type-pattern';
+  if(t.includes('Skill'))return 'type-skill';
+  return 'type-generative';
+}
+
+function impactClass(i){
+  if(i.startsWith('Very'))return 'impact-vh';
+  if(i.startsWith('High'))return 'impact-h';
+  return 'impact-m';
+}
+
+function maturityClass(m){return m.includes('Production')?'maturity-ready':'maturity-emerging'}
+function prfaqClass(p){
+  if(p.includes('Not in'))return 'prfaq-not';
+  if(p.includes('Partially'))return 'prfaq-partial';
+  return 'prfaq-covered';
+}
+
+function gF(){
+  const q=(document.getElementById('fs').value||'').toLowerCase();
+  const ft=document.getElementById('ft').value;
+  const fi=document.getElementById('fi').value;
+  const fm=document.getElementById('fm').value;
+  const fp=document.getElementById('fp').value;
+  return DATA.filter(d=>{
+    if(ft&&!d.detail.type.includes(ft))return false;
+    if(fi&&!d.detail.impact.startsWith(fi))return false;
+    if(fm&&!d.detail.maturity.includes(fm))return false;
+    if(fp&&!d.detail.prfaq_status.includes(fp))return false;
+    if(q){const h=[d.capability,d.detail.description,d.detail.type,d.detail.impact,...d.roles,...d.phases,...d.ucs].join(' ').toLowerCase();if(!h.includes(q))return false}
+    return true;
+  });
+}
+
+function R(){
+  const fl=gF();
+  const suggestions=fl.filter(d=>d.detail.prfaq_status.includes('Not in')||d.detail.prfaq_status.includes('suggestion')).length;
+  const ready=fl.filter(d=>d.detail.maturity.includes('Production')).length;
+  const totalUCs=new Set(fl.flatMap(d=>d.ucs)).size;
+  
+  document.getElementById('sb').innerHTML=`
+    <div class="st"><div class="sv">${fl.length}</div><div class="sl">Capabilities</div></div>
+    <div class="st"><div class="sv" style="color:#9F1239">${suggestions}</div><div class="sl">New Suggestions</div></div>
+    <div class="st"><div class="sv" style="color:#166534">${ready}</div><div class="sl">Production-ready</div></div>
+    <div class="st"><div class="sv" style="color:#2563EB">${totalUCs}</div><div class="sl">Use Cases Affected</div></div>`;
+  
+  let h='';
+  fl.forEach((d,idx)=>{
+    const det=d.detail;
+    const isOpen=openCards.has(idx);
+    const isSuggestion=det.prfaq_status.includes('Not in')||det.prfaq_status.includes('suggestion');
+    
+    h+=`<div class="card ${isOpen?'open':''}">`;
+    h+=`<div class="card-h ${isOpen?'open':''}" onclick="toggle(${idx})">`;
+    h+=`<span class="card-arrow">▶</span>`;
+    h+=`<div class="card-meta">`;
+    h+=`<div class="card-title">`;
+    h+=`<span class="type-badge ${typeClass(det.type)}">${e(det.type)}</span>`;
+    h+=`${e(d.capability)}`;
+    if(isSuggestion)h+=`<span class="suggestion-flag">SUGGESTION — Not in PRFAQ</span>`;
+    h+=`</div>`;
+    h+=`<div class="card-chips">`;
+    h+=`<span class="impact-badge ${impactClass(det.impact)}">Impact: ${e(det.impact.split('—')[0].trim())}</span>`;
+    h+=`<span class="maturity-badge ${maturityClass(det.maturity)}">${det.maturity.includes('Production')?'✓ Production-ready':'◐ Emerging'}</span>`;
+    h+=`<span class="ch" style="background:#F5F3FF;color:#5B21B6;border:1px solid #DDD6FE">${d.uc_count} use cases</span>`;
+    h+=`<span class="ch" style="background:#F9FAFB;color:var(--t2);border:1px solid var(--b)">Roles: ${d.roles.filter(r=>!r.startsWith('System')).join(' · ')}</span>`;
+    h+=`</div>`;
+    h+=`</div></div>`;
+    
+    // Body
+    h+=`<div class="card-body"><div class="detail-grid">`;
+    
+    // Description
+    h+=`<div class="db desc full"><h4>📋 What AI Would Do</h4><p>${e(det.description)}</p></div>`;
+    
+    // Impact
+    h+=`<div class="db impact"><h4>📈 Impact Assessment</h4><p>${e(det.impact)}</p></div>`;
+    
+    // Maturity
+    h+=`<div class="db maturity"><h4>🔬 Technology Maturity</h4><p>${e(det.maturity)}</p></div>`;
+    
+    // PRFAQ Status
+    h+=`<div class="db prfaq full"><h4>📄 PRFAQ Coverage</h4><p><span class="prfaq-badge ${prfaqClass(det.prfaq_status)}">${det.prfaq_status.includes('Not in')?'NOT IN PRFAQ':det.prfaq_status.includes('Partially')?'PARTIALLY COVERED':'COVERED'}</span> ${e(det.prfaq_status)}</p></div>`;
+    
+    // Affected UCs
+    h+=`<div class="db ucs full"><h4>🎯 Affected Use Cases (${d.uc_count})</h4>`;
+    h+=`<div class="uc-pills">${d.ucs.map(u=>`<span class="uc-pill">${u}</span>`).join('')}</div>`;
+    h+=`<p style="margin-top:8px;font-size:11px;color:var(--t3)"><b>Phases:</b> ${d.phases.join(' · ')}</p>`;
+    h+=`<p style="font-size:11px;color:var(--t3)"><b>Roles affected:</b> ${d.roles.join(' · ')}</p>`;
+    h+=`</div>`;
+    
+    // UX Implications
+    h+=`<div class="db ux full"><h4>🎨 UX & Implementation Notes for PM/UX</h4><p>`;
+    
+    // Generate UX notes based on capability type
+    if(det.type.includes('Generative')){
+      h+=`<b>Interaction pattern:</b> AI generates → Human reviews → Human refines. The generated output must be immediately editable in-place — no "accept then go edit elsewhere" pattern. Show confidence indicators per generated element so operators know where to focus review. Provide "regenerate" action for unsatisfactory outputs without losing manual edits to other fields.`;
+    }
+    if(det.type.includes('Agentic')){
+      h+=` <b>Agentic pattern:</b> AI executes multi-step workflow autonomously, presenting results for human approval. Must show clear audit trail of what the agent did (which MCPs called, what data checked, what conclusions drawn). "Show your work" transparency is essential for operator trust. Provide override/manual-takeover at any step.`;
+    }
+    if(det.type.includes('Pattern')){
+      h+=` <b>Detection pattern:</b> System monitors continuously and surfaces findings proactively. Alerts must be actionable (not just "something is wrong" but "here's what's wrong and here are your options"). Sensitivity tuning is essential — too many alerts causes fatigue, too few misses real issues.`;
+    }
+    if(det.type.includes('Skill')){
+      h+=` <b>Skill composition pattern:</b> AI chains multiple MCP tools to accomplish cross-system tasks. Each skill call should be visible in a collapsible "agent activity" log. Failed skill calls must surface with clear error context and retry option.`;
+    }
+    
+    h+=` <b>Trust building:</b> All AI actions should be reversible. Show clear "AI generated" vs "human authored" attribution. New capabilities should launch with conservative defaults and allow operators to increase AI autonomy as trust develops.`;
+    h+=`</p></div>`;
+    
+    h+=`</div></div></div>`;
+  });
+  
+  document.getElementById('ct').innerHTML=h;
+}
+
+function toggle(idx){openCards.has(idx)?openCards.delete(idx):openCards.add(idx);R()}
+
+R();
+</script>
+</body>
+</html>
